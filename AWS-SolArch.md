@@ -483,3 +483,18 @@ During a failover, CNAME record is updated to a healthy db copy
 
 Synchronously replicated -RDS 
 We can Force a failover 
+
+
+Steps to allow traffic:
+
+Create a VPC
+Create a internet gateway and attach to the vpc
+Create public and private subnets
+Enable auto assign options address for public subnet
+Create custom route table and allow traffic from world to internet gateway we just created
+associate the public subnet to the custom route table
+Create ec2 instances in public and private subnets
+
+
+Create a NAT gateway 
+Add this to the default route table. 0.0.0.0 to the nat gateway
