@@ -32,14 +32,17 @@ https://github.com/mmumshad/kubernetes-the-hard-way
 CORE CONCEPTS:
  
 Cluster Architecture:
-control plane components
-            API-Server: stores info about cluster; a management component which manages all the below components
-            Controller-Manager:
-                        node-controller: controls the nodes
-                        replication-controller: controls the containers/replicasets
-            scheduler: identifies the right node to schedule the nodes/pods/containers
-            etcd cluster: highly available key-value store
+
+Control plane components
+    - API-Server: stores info about cluster; a management component which manages all the below components
+    - Controller-Manager:
+       - node-controller: controls the nodes
+       - replication-controller: controls the containers/replicasets
+    - Scheduler: identifies the right node to schedule the nodes/pods/containers
+    - ETCD cluster: highly available key-value store
+
 kubelet contacts the api-server constantly, delivering the status of the node/containers
+
 kube-proxy ensures necessary rules are in place to contact each other (nodes/containers); communication between services of different/same worker-nodes
  
 ETCD:
