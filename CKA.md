@@ -775,7 +775,7 @@ Here is a link to kubernetes documentation if you want to learn more about this 
 https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md
  
 https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api_changes.md
-```
+
 ```
 kube-apiserver > controller & scheduler > kubelet & kube-proxy
     X                 X-1                       X-2
