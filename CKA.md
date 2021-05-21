@@ -1171,8 +1171,9 @@ kube-router, calico, romana, weave-net
 Flannel does not support network policies
 
 We can use the solutions that does not support network policies, but the restrictions wont work once enforced. 
-STORAGE:
- 
+
+### STORAGE:
+
 PV & PVC should match the attributes for a successful claim (such as storage, accessModes etc)
 When a PVC is deleted, the PV is not deleted but also its not available (unreleased)
 because of the default claim policy - Retain; it has to be manually deleted by Administrator.
@@ -1193,7 +1194,7 @@ No other claims can utilize the remaining capacity in the volume as there is a o
  
 If no other volumes are available, PVC will be in a pending state.
  
-Certification TIPS & TRICKS:
+### Certification TIPS & TRICKS:
  
 Lecture 28:
 Certification Tip!
