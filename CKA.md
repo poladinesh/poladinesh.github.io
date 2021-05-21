@@ -141,14 +141,14 @@ create pods in different namespace
 kubectl create -f pod-definition.yaml --namespace=dev
 
 namespace attribute can be added in the metadata section of the pod definition, that way we dont have to add it on commandline
-###################################
-#namespace-dev.yaml
-#create a namespace with name "dev"
+```
+# namespace-dev.yaml
+# create a namespace with name "dev"
 apiVersion: v1
 kind: Namespace
 metadata:
-            name: dev
-###################################
+  name: dev
+```
  
 #create namespace "dev" using commandline:
 kubectl create namespace dev
