@@ -750,16 +750,16 @@ Upgrade process:
 1) Cordon a node -> makes a node unschedulable
 2) Drain a node -> moves pods to other nodes
 3) Uncordon a node -> makes a node schedulable again
- 
+``` 
 Example:
 kubectl cordon node-01
 kubectl drain node-01
 kubectl uncordon node-01
- 
+``` 
 Note: If there are pods that are not part of replicaset, deployment, daemonset, job,  statefulset are on the node that is taken down for maintenance, the pod will be lost forever. Also the node needs to be drained forcefully using following command:
  
 kubectl drain <nodename> --ignore-daemonsets --force
- 
+```
 Kubernetes Software Versions:
  
 MAJOR.MINOR.PATCH
@@ -779,11 +779,12 @@ Here is a link to kubernetes documentation if you want to learn more about this 
 https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md
  
 https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api_changes.md
- 
+```
+```
 kube-apiserver > controller & scheduler > kubelet & kube-proxy
-    X                                     X-1                                       X-2
-            (1.10)               (v1.9 or v1.10)      (v1.8 or v1.9 or v1.10)
- 
+    X                 X-1                       X-2
+ (1.10)           (v1.9 or v1.10)      (v1.8 or v1.9 or v1.10)
+ ```
 kubectl can be higher than the kube-apiserver
  
 kubernetes only supports upto latest 3 minor versions
