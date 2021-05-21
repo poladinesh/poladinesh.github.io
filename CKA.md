@@ -755,46 +755,44 @@ kubectl uncordon node-01
 Note: If there are pods that are not part of replicaset, deployment, daemonset, job,  statefulset are on the node that is taken down for maintenance, the pod will be lost forever. Also the node needs to be drained forcefully using following command:
  
 kubectl drain <nodename> --ignore-daemonsets --force
-```
+
 Kubernetes Software Versions:
- 
+
 MAJOR.MINOR.PATCH
 Minor-> Features, Functionalities
 Patch-> BugFixes
- 
+
 alpha-release: bug fixes & improvements, features are disabled by default and are buggy
 beta-release: code tested and new features turned on
 After beta-release, its merged to a stable release
- 
+
 Control plane components with same version: api-server, controller, scheduler, proxy, kubelet, kubectl
 ETCD cluster & CoreDNS have their own versions as they are separate projects
 https://kubernetes.io/docs/concepts/overview/kubernetes-api/
- 
+
 Here is a link to kubernetes documentation if you want to learn more about this topic (You don't need it for the exam though):
- 
+
 https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md
- 
 https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api_changes.md
 
-```
 kube-apiserver > controller & scheduler > kubelet & kube-proxy
     X                 X-1                       X-2
  (1.10)           (v1.9 or v1.10)      (v1.8 or v1.9 or v1.10)
- ```
+
 kubectl can be higher than the kube-apiserver
- 
+
 kubernetes only supports upto latest 3 minor versions
 Lets say you are on 1.10 and a new version 1.11 & 1.12 are available.
 K8s will support only 1.10, 1.11 and 1.12. This means when K8s releases 1.13, 1.10 will be unsupported
- 
+
 Recommended way to upgrade the cluster is to upgrade to one minor version at a time.
 1.10 -> 1.11 -> 1.12 -> 1.13
- 
+
 kubeadm upgrade plan -> lists out current and latest k8s version
 apt-get upgrade -y kubeadm=1.12.0-00
 kubeadm upgrade apply plan v1.12.0
 apt-get upgrade -y kubelet=1.12.0-00
- 
+
 Node-upgrade:
 kubectl drain node-01
 apt-get upgrade -y kubeadm=1.12.0-00
@@ -802,14 +800,17 @@ apt-get upgrade -y kubelet=1.12.0-00
 kubeadm upgrade node config --kubelet-version v.12.0
 systemctl restart kubelet
 kubectl uncordon node-01
- 
+
 Note: Version shown in kubectl get nodes is the version of the kubectl
  
-Backup & Restore:
+## Backup & Restore:
+
 Backup Candidates:
-ETCD & Persistent volumes
+- ETCD 
+- Persistent volumes
 Resource Configuration:
 kubectl get all --all-namespaces -o yaml > all-deploy-services.yaml
+
 ETCD Cluster:
 check etcd.service for value of data-dir value which is the location of the data
 etcdctl snapshot save snapshot.db
@@ -828,10 +829,9 @@ change the cluster-token and data-dir values in the etcd.service
 systemctl daemon-reload
 service etcd restart
 service kube-apiserver start
- 
-when etcd restores from backup it creates a initializes a new cluster configuration and
-configures the members of the etcd as new members of the new cluster.
- 
+
+When etcd restores from backup it creates a initializes a new cluster configuration and configures the members of the etcd as new members of the new cluster.
+
 This prevents the new members from accidentally joining the existing cluster
  
 Also specify the following certs for authentication:
@@ -841,18 +841,15 @@ ETCDCTL_API=3 etcdctl snapshot save snapshot.db \
             --cert=/etc/etcd/etcd-server.crt \
             --key=/etc/etcd/etcd-server.key
  
- 
-ETCDCTL_API=3 etcdctl snapshot save /tmp/snapshot-pre-boot.db --cacert /etc/kubernetes/pki/etcd/ca.crt --cert /etc/kubernetes/pki/etcd/server.crt --key /etc/kubernetes/pki/etcd/server.key
- 
-https://kubernetes.io/docs/tasks/administer-cluster/configure-upgrade-etcd/#backing-up-an-etcd-cluster
- 
-https://github.com/etcd-io/etcd/blob/master/Documentation/op-guide/recovery.md
- 
-https://www.youtube.com/watch?v=qRPNuT080Hk
- 
-SECURITY:
-asymmetric encryption is used to distribute the symmetric key for ssl/tls encryption
 
+ETCDCTL_API=3 etcdctl snapshot save /tmp/snapshot-pre-boot.db --cacert /etc/kubernetes/pki/etcd/ca.crt --cert /etc/kubernetes/pki/etcd/server.crt --key /etc/kubernetes/pki/etcd/server.key
+
+https://kubernetes.io/docs/tasks/administer-cluster/configure-upgrade-etcd/#backing-up-an-etcd-cluster
+https://github.com/etcd-io/etcd/blob/master/Documentation/op-guide/recovery.md
+https://www.youtube.com/watch?v=qRPNuT080Hk
+
+## SECURITY:
+Asymmetric encryption is used to distribute the symmetric key for ssl/tls encryption
 ca certs (public keys of CA) -> trusted ca tab in the browser
 
 if your org is using a private CA, you need to install the public keys of private CA in your browser (this will validate the authenticity of private CA)
