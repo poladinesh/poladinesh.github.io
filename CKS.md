@@ -1,5 +1,6 @@
 # Certified Kubernetes Security Specialist
 
+### Cluster Setup and Hardening
 
 Certificates API is managed by Controller-Manager(on master node). 
 It has CSR-Signing & CSR-Approving controllers that are responsible for signing & approving certificates 
@@ -27,7 +28,7 @@ All the above named objects are called API Groups,
 /apps   /v1     /deployments –> list, get, create, update, delete, watch /replicasets /statefulsets 
 Above deployments, replicasets, stateful sets are called Resources & each resoource has actions called Verbs (such as list, get, create, update, delete, watch) 
 
-Authorization: Authorization modes as specified as a flag on the kube-apiserver
+#### Authorization: Authorization modes as specified as a flag on the kube-apiserver
 Heirarchy: NODE -> RBAC -> WEBHOOK
 Types:
 Node (Node Authorizer), ABAC, RBAC, Webhook, [AlwaysAllow, AlwaysDeny]
@@ -43,7 +44,7 @@ Webhook:
 Open Policy Agent is a 3rd party tool that help AdmissionControlAuthorization
 Whenever a user request comes in, kube-apiserver makes a call to OPA to check if the user can be allowed or not
 
-RBAC: kubectl get roles kubectl get rolebindings
+#### RBAC: kubectl get roles kubectl get rolebindings
 Create a Role: creates the role with necessary operations 
 ################################################################ 
 apiVersion: rbac.authorization.k8s.io/v1 
@@ -106,7 +107,8 @@ kubectl create clusterrole storage-admin –-verb=get,watch,create,list,delete �
 kubectl create clusterrolebinding michelle-storage-admin –-clusterrole=storage-admin  –-user=michelle  –dry-run -o yaml > storageadminrb.yaml
 
 
-Kubelet Security: kubelet configuration file -> kubelet-config.yaml
+#### Kubelet Security: 
+kubelet configuration file -> kubelet-config.yaml/config.yaml
 Note: kubeadm does not deploy the Kubelet
 
 issues:
@@ -141,27 +143,27 @@ Set the authorization mode to Webhook -> this will make a call to Kube-apiserver
 On port 10255, this is set a read-only-port on kubelet.service/kubelet-config.yaml
 To change, set this port to 0 in the kubelet.service/kubelet-config.yaml
 
-Kubectl proxy:
+#### Kubectl proxy:
 Using kubectl proxy, we can access the kube-apiserver locally on port 8001
 kubectl proxy
     Starting to serve on 127.0.0.1:8001
 
-Kubectl port-forward:
+#### Kubectl port-forward:
 kubectl port-forward pod/service localhost_port:pod/service_port
 kubectl port-forward service/nginx 28080:80
 service/nginx is running on 80 as ClusterIP
 we can access it using http://localhost:28080/ using the above port forward command
 
-Kubernetes Dashboard:
+#### Kubernetes Dashboard:
 Securing Dashboard: Limit the serviceaccount that uses the kubernetes dashboard to specific namespace or tie it to a view clusterrole
 
-Verify Downloaded Kubernetes Binaries:
+#### Verify Downloaded Kubernetes Binaries:
 use checksum to verify
 To download curl https://dl.k8s.io/v1.21.1/kubernetes.tar.gz -L -o kubernetes.tar.gz
 on Mac: shasum -a 512 kubernetes.tar.gz
 On Linux: sha512sum kubernetes.tar.gz
 
-Kubernetes Software Versions:
+#### Kubernetes Software Versions:
 1.21.3
 Major.Minor.Patch
 
