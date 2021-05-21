@@ -29,7 +29,7 @@ https://kubernetes.io/docs/reference/kubectl/cheatsheet/
 K8s the hard way: https://github.com/mmumshad/kubernetes-the-hard-way
 
 CORE CONCEPTS:
- 
+
 Cluster Architecture:
 
 Control plane components
@@ -55,19 +55,21 @@ Options --advertise-client-urls is important because this is what etcd listens o
 Two types of setups:
 1. manual - everything should be downloaded and installed from scratch
 2. kubeadm install - kubeadm will install all the dns, etcd, kube-api-server & other components
- 
+
 kube-api-server:
 In a kubeadm setup:
 kube-api server yaml file location -> /etc/kubernetes/manifests/kube-apiserver.yaml --> when done using kubeadm setup
+
 In a non-kubeadm setup:
-we can inspect the service using the service: cat /etc/systemd/system/kube-apiserver.service
- 
+We can inspect the service using the service: cat /etc/systemd/system/kube-apiserver.service
+
 option --etcd-servers is where we specify the etcd server location in the form of a url
  
-Controller-Manager: continuously monitors all the components in the system and bring them to desired state
-1) watch status
-2) remediate situation
-Node-Controller: responsible for monitoring the status of nodes
+Controller-Manager: Continuously monitors all the components in the system and bring them to desired state
+1. watch status
+2. remediate situation
+
+Node-Controller: Responsible for monitoring the status of nodes
 node monitor period: 5 seconds ---> checks nodes every 5 seconds
 node monitor grace period: 40 seconds ----> waits for 40 seconds before node is marked as down
 pod eviction timeout: 5 minutes ----> waits for 5 minutes before scheduling the pods on bad node to a healthy node
