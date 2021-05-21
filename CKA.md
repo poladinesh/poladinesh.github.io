@@ -804,7 +804,7 @@ kubeadm upgrade node config --kubelet-version v.12.0
 systemctl restart kubelet
 kubectl uncordon node-01
 
-Note: Version shown in kubectl get nodes is the version of the kubectl
+Note: Version shown in kubectl get nodes is the version of the kubelet present on the nodes
  
 ## Backup & Restore:
 
