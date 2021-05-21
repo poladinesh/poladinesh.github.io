@@ -152,32 +152,28 @@ metadata:
  
 #create namespace "dev" using commandline:
 kubectl create namespace dev
- 
-we can set namespaces by default using context switching so that we dont have to mention namespaces all the time:
-switching namespaces:
-kubectl config set-context $(kubectl config current-context) --namespace=dev
- 
-#creating ResourceQuota for namespaces
-Compute-quota.yaml
-######################################################################
+
+We can set namespaces by default using context switching so that we dont have to mention namespaces all the time:
+Switching namespaces: kubectl config set-context $(kubectl config current-context) --namespace=dev
+
+Creating ResourceQuota for namespaces: Compute-quota.yaml
+```
 apiVersion: v1
 kind: ResourceQuota
 metadata:
-            name: compute-quota
-            namespace: dev
+  name: compute-quota
+  namespace: dev
 spec:
-            hard:
-                        pods: "10"
-                        requests.cpu: "4"
-                        requests.memory: 5Gi
-                        limits.cpu: "10"
-                        limits.memory: 10Gi
-######################################################################
- 
+  hard:
+     pods: "10"
+     requests.cpu: "4"
+     requests.memory: 5Gi
+     limits.cpu: "10"
+     limits.memory: 10Gi
+```
 Services:
- 
- 
-SCHEDULING:
+
+## SCHEDULING:
  
 Manual Scheduling:
 nodeName is the property which decides the pod where to go
