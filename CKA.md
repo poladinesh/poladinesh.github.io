@@ -70,17 +70,17 @@ Controller-Manager: Continuously monitors all the components in the system and b
 2. remediate situation
 
 Node-Controller: Responsible for monitoring the status of nodes
-node monitor period: 5 seconds ---> checks nodes every 5 seconds
-node monitor grace period: 40 seconds ----> waits for 40 seconds before node is marked as down
-pod eviction timeout: 5 minutes ----> waits for 5 minutes before scheduling the pods on bad node to a healthy node
- 
+- node monitor period: 5 seconds ---> checks nodes every 5 seconds
+- node monitor grace period: 40 seconds ----> waits for 40 seconds before node is marked as down
+- pod eviction timeout: 5 minutes ----> waits for 5 minutes before scheduling the pods on bad node to a healthy node
+
 Replication-Controller: same as above but schedules pods instead of nodes
  
-all different type of controllers are packaged together into a single process called kubernetes-controller-manager
- 
-check for the option: -> controllers StringSlice to see which controllers are enabled
- 
-for kubeadm installs:
+All different type of controllers are packaged together into a single process called kubernetes-controller-manager
+
+Check for the option: -> controllers StringSlice to see which controllers are enabled
+
+For kubeadm installs:
 cat /etc/kubernetes/manifests/
 for non-kubeadm installs:
 view the configuration as a service located in /etc/systemd/system/service-name
