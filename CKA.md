@@ -776,8 +776,11 @@ https://github.com/kubernetes/community/blob/master/contributors/devel/sig-archi
 https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api_changes.md
 
 kube-apiserver > controller & scheduler > kubelet & kube-proxy
+
+```
   X                 X-1                       X-2
 (1.10)           (v1.9 or v1.10)      (v1.8 or v1.9 or v1.10)
+```
 
 kubectl can be higher than the kube-apiserver
 
