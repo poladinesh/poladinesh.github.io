@@ -51,10 +51,10 @@ ETCD:
 Note: default client for etcd is etcdctl
  
 Options --advertise-client-urls is important because this is what etcd listens on; also this is what is configured on kube-apiserver
- 
-two types of setups:
-1) manual - everything should be downloaded and installed from scratch
-2) kubeadm install - kubeadm will install all the dns, etcd, kube-api-server & other components
+
+Two types of setups:
+1. manual - everything should be downloaded and installed from scratch
+2. kubeadm install - kubeadm will install all the dns, etcd, kube-api-server & other components
  
 kube-api-server:
 In a kubeadm setup:
