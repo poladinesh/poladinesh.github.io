@@ -18,16 +18,15 @@ Troubleshooting 10%
 Certified Kubernetes Administrator: https://www.cncf.io/certification/cka/
 
 Exam Curriculum (Topics): https://github.com/cncf/curriculum
- 
+
 Candidate Handbook: https://www.cncf.io/certification/candidate-handbook
- 
+
 Exam Tips: http://training.linuxfoundation.org/go//Important-Tips-CKA-CKAD
- 
+
 https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#version
 https://kubernetes.io/docs/reference/kubectl/cheatsheet/
  
-K8s the hard way:
-https://github.com/mmumshad/kubernetes-the-hard-way
+K8s the hard way: https://github.com/mmumshad/kubernetes-the-hard-way
  
 CORE CONCEPTS:
  
