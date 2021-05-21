@@ -30,9 +30,15 @@ All the above named objects are called API Groups.
 Above deployments, replicasets, stateful sets are called Resources & each resoource has actions called Verbs (such as list, get, create, update, delete, watch) 
 
 #### Authorization: Authorization modes as specified as a flag on the kube-apiserver
+
 Heirarchy: NODE -> RBAC -> WEBHOOK
+
 Types:
-Node (Node Authorizer), ABAC, RBAC, Webhook, [AlwaysAllow, AlwaysDeny]
+- Node (Node Authorizer)
+- ABAC 
+- RBAC
+- Webhook
+- AlwaysAllow, AlwaysDeny
 
 ABAC: Attribute Based Access Control
 {"kind": "Policy", "spec": {"user": "dev-user", "namespace": "*", "resources": "pods", "apiGroup": "*"}}
