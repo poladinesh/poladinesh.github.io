@@ -173,7 +173,7 @@ spec:
 ```
 Services:
 
-## SCHEDULING:
+### SCHEDULING:
  
 Manual Scheduling:
 nodeName is the property which decides the pod where to go
