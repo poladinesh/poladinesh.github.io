@@ -21,7 +21,7 @@ kubectl config view –kubeconfig=/root/my-kube-config
 kubectl config –kubeconfig=/root/my-kube-config use-context research -> change context
 
 #### API Groups:
-/api - core (all core functionality) - /v1 - namespaces, pods, rc, events, nodes, pv, pvc etc 
+/api - core (all core functionality) - /v1 - namespaces, pods, rc, events, nodes, pv, pvc etc
 /apis - named (new features) - /apps, /extensions, /networking.k8s.io, /authentication.k8s.io, /certificates.k8s.io
 
 All the above named objects are called API Groups,
