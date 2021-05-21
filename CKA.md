@@ -746,12 +746,12 @@ Upgrade process:
 1) Cordon a node -> makes a node unschedulable
 2) Drain a node -> moves pods to other nodes
 3) Uncordon a node -> makes a node schedulable again
-``` 
+
 Example:
 kubectl cordon node-01
 kubectl drain node-01
 kubectl uncordon node-01
-``` 
+
 Note: If there are pods that are not part of replicaset, deployment, daemonset, job,  statefulset are on the node that is taken down for maintenance, the pod will be lost forever. Also the node needs to be drained forcefully using following command:
  
 kubectl drain <nodename> --ignore-daemonsets --force
