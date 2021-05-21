@@ -27,7 +27,7 @@ https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#version
 https://kubernetes.io/docs/reference/kubectl/cheatsheet/
 
 K8s the hard way: https://github.com/mmumshad/kubernetes-the-hard-way
- 
+
 CORE CONCEPTS:
  
 Cluster Architecture:
