@@ -2,6 +2,7 @@
 
  
 CKA Exam Topics Breakdown:
+```
 Core Concepts 19% - done
 Security 12% - wip
 Installation, Configuration & Validation 12%
@@ -12,9 +13,8 @@ Storage 7%
 Scheduling 5% - done
 Logging / Monitoring 5% - done
 Troubleshooting 10%
- 
-CKA Coupon: LFEVENT20
- 
+```
+
 Certified Kubernetes Administrator: https://www.cncf.io/certification/cka/
  
 Exam Curriculum (Topics): https://github.com/cncf/curriculum
