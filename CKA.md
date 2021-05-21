@@ -33,24 +33,24 @@ CORE CONCEPTS:
 Cluster Architecture:
 
 Control plane components
-    - API-Server: stores info about cluster; a management component which manages all the below components
-    - Controller-Manager:
-       - node-controller: controls the nodes
-       - replication-controller: controls the containers/replicasets
-    - Scheduler: identifies the right node to schedule the nodes/pods/containers
-    - ETCD cluster: highly available key-value store
+- API-Server: stores info about cluster; a management component which manages all the below components
+- Controller-Manager:
+   - Node-controller: controls the nodes.
+   - Replication-controller: controls the containers/replicasets
+- Scheduler: identifies the right node to schedule the nodes/pods/containers
+- ETCD cluster: highly available key-value store
 
 kubelet contacts the api-server constantly, delivering the status of the node/containers
 
 kube-proxy ensures necessary rules are in place to contact each other (nodes/containers); communication between services of different/same worker-nodes
  
 ETCD:
-1) Download the etcd binaries from official github page
-2) Extract the downloaded tarball
-3) Run the etcd service (./etcd) --> listens on 2379 by default
-default client for etcd is etcdctl
- 
-options --advertise-client-urls is important because this is what etcd listens on; also this is what is configured on kube-apiserver
+- Download the etcd binaries from official github page
+- Extract the downloaded tarball
+- Run the etcd service (./etcd) --> listens on 2379 by default
+Note: default client for etcd is etcdctl
+ 
+Options --advertise-client-urls is important because this is what etcd listens on; also this is what is configured on kube-apiserver
  
 two types of setups:
 1) manual - everything should be downloaded and installed from scratch
