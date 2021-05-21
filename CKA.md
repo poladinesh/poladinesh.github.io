@@ -92,7 +92,7 @@ Kube-Scheduler: schedulers only decide which pod goes into where, it is the kube
 Scheduler uses the following rules to place a pod appropriately:
 1) Filter nodes: check which nodes have sufficient resources
 2) Rank Nodes: rank the nodes accordingly which has more resources after the pod is placed
- 
+
 Other concepts:
 resource requirements and limits
 taints and tolerations
@@ -100,47 +100,46 @@ node selectors/affinity
  
 Kubelets:
 A Kubelet  on worker-node does the following tasks:
-a) registers the node
-b) creates the pods as suggested by scheduler
-c) maintain node and pods
-d) report the status back to the kube-api-server
+1. registers the node
+2. creates the pods as suggested by scheduler
+3. maintain node and pods
+4. report the status back to the kube-api-server
  
-kubelet is not installed by kubeadm
- 
+Note: kubelet is not installed by kubeadm
+
 Kube-proxy: is a process that runs on each node in k8s cluster which takes care of the services to direct traffic to backend pods  which are behind the services. It does so by using the iptables rules
 In k8s architecture, a pod can communicate with another pod on a different node using a private-network which is pod-network.
 It is a internal virtual network that spans across the cluster
- 
+
 Replicaset will consider the pods that are created before with the same label
- 
-selector is the difference between replicaset and replication-controller.
+
+Selector is the difference between replicaset and replication-controller.
 Selector is mandatory while specifying a replicaset
- 
  
 Namespaces:
 default: by default all resources are created here
 kube-system: namespace for kubernetes resources such as networking, dns, etc
 kube-public: resources in this namespaces are made available to everyone
- 
+
 To connect to a service in another namespace, use the following:
 mysql.connect("db-service.dev.svc.cluster.local")
- 
+
 syntax: service.namespace.subdomain.domain
- 
+
 cluster.local -> default domain of the cluster
 svc -> subdomain for service
 dev -> namespace
 db-service -> service name
 The reason we can access services in different namespaces is because whenever services are created, services will have their dns entries create at kubernetes global level
- 
+
 kubectl get pods --all-namespaces
 kubectl get namespaces
 kubectl get pods -n dev
 kubectl get pods
- 
+
 create pods in different namespace
 kubectl create -f pod-definition.yaml --namespace=dev
- 
+
 namespace attribute can be added in the metadata section of the pod definition, that way we dont have to add it on commandline
 ###################################
 #namespace-dev.yaml
