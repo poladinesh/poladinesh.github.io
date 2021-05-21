@@ -24,9 +24,9 @@ kubectl config –kubeconfig=/root/my-kube-config use-context research -> change
 /api - core (all core functionality) - /v1 - namespaces, pods, rc, events, nodes, pv, pvc etc
 /apis - named (new features) - /apps, /extensions, /networking.k8s.io, /authentication.k8s.io, /certificates.k8s.io
 
-All the above named objects are called API Groups,
+All the above named objects are called API Groups.
 
-/apps   /v1     /deployments –> list, get, create, update, delete, watch /replicasets /statefulsets 
+/apps   /v1     /deployments –> list, get, create, update, delete, watch /replicasets /statefulsets
 Above deployments, replicasets, stateful sets are called Resources & each resoource has actions called Verbs (such as list, get, create, update, delete, watch) 
 
 #### Authorization: Authorization modes as specified as a flag on the kube-apiserver
