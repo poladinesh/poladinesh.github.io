@@ -2,10 +2,10 @@
 
 
 #### 4 C's of Cloud Native Security:
-Cloud: Cloud Security - Infrastructure that hosted in the cloud (firewalls could have been avoided the attack)
-Cluster: Cluster Security - K8s API, Docker Daemon and Dashboard, others were not secured
-Container: Container Security - Privileged Containers, Run any Image
-Code: Code Security - hardcoding credentials, passing using environment variables, exposing without tls
+- Cloud: Cloud Security - Infrastructure that hosted in the cloud (firewalls could have been avoided the attack)
+- Cluster: Cluster Security - K8s API, Docker Daemon and Dashboard, others were not secured
+- Container: Container Security - Privileged Containers, Run any Image
+- Code: Code Security - hardcoding credentials, passing using environment variables, exposing without tls
 
 ### Cluster Setup and Hardening
 
