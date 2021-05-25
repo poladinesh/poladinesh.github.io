@@ -1,5 +1,12 @@
 # Certified Kubernetes Security Specialist
 
+
+#### 4 C's of Cloud Native Security:
+Cloud: Cloud Security - Infrastructure that hosted in the cloud (firewalls could have been avoided the attack)
+Cluster: Cluster Security - K8s API, Docker Daemon and Dashboard, others were not secured
+Container: Container Security - Privileged Containers, Run any Image
+Code: Code Security - hardcoding credentials, passing using environment variables, exposing without tls
+
 ### Cluster Setup and Hardening
 
 #### TLS in Kubernetes:
@@ -13,6 +20,9 @@ kubectl certificate approve jane -> approve certificate
 kubectl get csr jane -o yaml -> view approved certificate 
 kubectl deny csr agent-smith -> deny csr 
 kubectl delete csr agent-smith -> delete csr
+
+Note: the CSR K8s object should include the the csr in base64 encoded format
+Also, once the csr is approved, the approved certificate is in the form of base64 encoded certificate in the command output (kubectl get csr jane -o yaml)
 
 Kube Config: context is the combination of user and cluster name. 
 Each config file has a default context in the name of current-context 
