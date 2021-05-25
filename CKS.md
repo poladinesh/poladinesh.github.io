@@ -212,3 +212,66 @@ kube-bench is cis benchmark tool from aqua security
 kubectl can be higher than the kube-apiserver
 
 kubernetes only supports upto latest 3 minor versions Lets say you are on 1.10 and a new version 1.11 & 1.12 are available. K8s will support only 1.10, 1.11 and 1.12. This means when K8s releases 1.13, 1.10 will be unsupported
+
+#### Cluster upgrade process using kubeadm:
+Master Node Upgrade Steps:
+kubeadm upgrade plan -> lists out current and latest k8s version
+upgrade kubeadm
+  apt-get upgrade -y kubeadm=1.12.0-00
+upgrade kubernetes control components using upgraded kubeadm
+  kubeadm upgrade apply plan v1.12.0
+upgrade kubelets
+  apt-get upgrade -y kubelet=1.12.0-00
+
+Worker Node Upgrade Steps:
+kubectl drain node-01 
+apt-get upgrade -y kubeadm=1.12.0-00 
+apt-get upgrade -y kubelet=1.12.0-00 
+kubeadm upgrade node config –kubelet-version v.12.0 
+systemctl restart kubelet 
+kubectl uncordon node-01
+
+Lab Commands: apt update, apt install kubeadm=1.19.0-00 and then kubeadm upgrade apply v1.19.0 and then apt install kubelet=1.19.0-00
+
+Note: Version shown in kubectl get nodes is the version of the kubelet present on the nodes  
+
+
+#### Network Policy:
+
+Supported Selectors: podSelector, namespaceSelector, ipBlock
+
+#### Ingress: L7 Load Balancer
+
+
+#### Securing Docker Daemon:
+we can start docker in debug mode for troubleshooting: dockerd --debug
+By Default Docker daemon is not exposed, if there is a need to expose we need to protect it
+By Default when docker daemon is started, its opens a unix socket at /var/run/docker.sock
+A unix socket is an IPC(Inter process communication), that is used for communication between different processes on same host.
+This means Docker Daemon is accessible on same host and Docker CLI is configured to talk to the dockerdaemon via this socket.
+Enable TLS Encryption followed by Authentication (enable tlsverify and tlscacert)
+Once Authentication is enabled, all clients need to have a key-pair along with cacert to access the docker Daemon
+Also, clients need to use tls options (DOCKER_HOST,--tls, --tlscert, --tlskey, --tlscacert) to connect to remote Docker Daemon or we can drop the certs into .docker under users home directory
+
+2375 -> unencrypted
+2376 -> encrypted
+
+All the above options can be specified in /etc/docker/daemon.json or passed to the docker daemon while startup as flags
+With Authentication:
+{
+  "hosts": ["tcp://192.168.1.10:2376"]
+  "tlscert": "/var/docker/server.pem",
+  "tlskey": "/var/docker/serverkey.pem",
+  "tlsverify":"true"
+  "tlscacert":"/var/docker/caserver.pem"
+}
+
+Without Authentication:
+{
+  "hosts": ["tcp://192.168.1.10:2376"]
+  "tlscert": "/var/docker/server.pem",
+  "tlskey": "/var/docker/serverkey.pem",
+  "tls":"true"
+}
+
+### System Hardening:
