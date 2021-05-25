@@ -1,5 +1,14 @@
 # Certified Kubernetes Security Specialist
 
+CKS Exam Topics Breakdown:
+```
+Cluster Setup - 10%
+Cluster Hardening - 15%
+System Hardening - 15%
+Minimize Microservice Vulnerabilities - 20%
+Supply Chain Security - 20% 
+Monitoring, Logging and Runtime Security - 20%
+```
 
 #### 4 C's of Cloud Native Security:
 - Cloud: Cloud Security - Infrastructure that hosted in the cloud (firewalls could have been avoided the attack)
