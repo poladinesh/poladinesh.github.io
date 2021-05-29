@@ -350,8 +350,10 @@ restart the system (shutdown -r now) and list the kernerl modules
 check for ports in services / port-service mappings:
 cat /etc/services | grep -i 53
 
-UFW: Uncomplicated Firewall 
+UFW: Uncomplicated Firewall. 
 ufw is a wrapper for iptables
+```
+check ufw status:  
 ufw status
 
 enable/disable/reset firewall:  
@@ -376,3 +378,4 @@ ufw status numbered
 
 allow a tcp port range between 1000 and 2000 in ufw:  
 ufw allow 1000:2000/tcp
+```
