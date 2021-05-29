@@ -375,5 +375,4 @@ show firewall rules with numbers:
 ufw status numbered
 
 allow a tcp port range between 1000 and 2000 in ufw:
-
 ufw allow 1000:2000/tcp
