@@ -335,19 +335,20 @@ systemctl disable apache2
 
 rm /lib/systemd/system/nginx.service - remove unit file of the nginx service
 
-list all kernel modules:
+Working with kernel modules:  
+```
+list kernel modules:  
 lsmod
-ibmcloud ks ingress alb disable --alb <ALB_ID> -c <cluster_name_or_ID>
 
-load a kernel module: needs to run as root user
-modprobe pcspkr # load pckspkr kernel module
+load a kernel module: (needs to run as root user). 
+modprobe pcspkr (loads pckspkr kernel module)
 
 blacklist a kernel module:
 /etc/modprobe.d/blacklist.conf
 add this line: blacklist evbug
 restart the system (shutdown -r now) and list the kernerl modules
-
-check for ports in services / port-service mappings:
+```
+check for ports in services / port-service mappings:  
 cat /etc/services | grep -i 53
 
 UFW: Uncomplicated Firewall. 
