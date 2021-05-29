@@ -283,10 +283,9 @@ Restrict Network Access
 Restrict Obsolete Kernel Modules
 Identify and Fix Open Ports 
 
-Reducing Attack Surface:
 Limit Node Access:
-create cluster in private network and allow access to Cluster via VPN
-Restrict a particular range of IPs using firewalls
+- Create cluster in private network and allow access to Cluster via VPN
+- Restrict a particular range of IPs using firewalls
 
 Types of Accounts:
 User Account
@@ -298,17 +297,19 @@ Commands:
 id, who, last - last logged in of a user
 
 Access Control Files:
+```
 /etc/passwd: has user info
 /etc/shadow: has password
 /etc/group: has all group info
+```
 
-Remove user :
-update a default shell to nologin shell:
-usermod -s /bin/nologin michael -> disables shell login for michael
-usermod -s /usr/sbin/nologin himanshi -> disables shell login for himanshi
-userdel michael
+Remove user :  
+update a default shell to nologin shell:  
+usermod -s /bin/nologin michael -> disables shell login for michael. 
+usermod -s /usr/sbin/nologin himanshi -> disables shell login for himanshi. 
+userdel michael. 
 
-Remove a user from a group:
+Remove a user from a group:  
 userdel michael admin -> removes michael from 'admin' group
 
 SSH Hardening:
