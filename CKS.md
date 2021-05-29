@@ -275,3 +275,94 @@ Without Authentication:
 }
 
 ### System Hardening:
+
+Limit Node Access
+RBAC Access
+Remove Obsolete Packages & services
+Restrict Network Access
+Restrict Obsolete Kernel Modules
+Identify and Fix Open Ports 
+
+Reducing Attack Surface:
+Limit Node Access:
+create cluster in private network and allow access to Cluster via VPN
+Restrict a particular range of IPs using firewalls
+
+Types of Accounts:
+User Account
+SuperUser Account (root)
+System Account (mail, ssh)
+Service Account (nginx, http)
+
+Commands:
+id, who, last - last logged in of a user
+
+Access Control Files:
+/etc/passwd: has user info
+/etc/shadow: has password
+/etc/group: has all group info
+
+Remove user :
+update a default shell to nologin shell:
+usermod -s /bin/nologin michael -> disables shell login for michael
+usermod -s /usr/sbin/nologin himanshi -> disables shell login for himanshi
+userdel michael
+
+Remove a user from a group:
+userdel michael admin -> removes michael from 'admin' group
+
+##### SSH Hardening:
+Use SSH Key pair, ssh public key is installed in users home directory under .ssh/authorized_keys
+disable ssh for root account, this will allow to login with users own account
+To disable rootlogin and password authentication, edit /etc/ssh/sshd_config with following parameters:
+PermitRootLogin no & PasswordAuthentication no
+save the file and restart sshd service (systemctl restart sshd)
+
+User Privilege Escalation:
+preferred way to run commands is to use sudo
+/etc/sudoers -> can be edited with visudo
+user/group/ hostname/user:group the command to be run / command
+jim     ALL=(ALL:ALL) ALL -> sudo with password
+jim     ALL=(ALL:ALL) NOPASSWD:ALL -> sudo without password
+%admin  ALL=(ALL:ALL) ALL -> all users in admin group will have sudoers access
+
+Remove Obsolete Packages and Services:
+Keep the system as lean as possible by making sure that only the required software is installed and the ones that are installed, are constantly updated to address security fixes.
+
+systemctl list-units --type service
+systemctl stop apache2
+systemctl disable apache2
+
+rm /lib/systemd/system/nginx.service - remove unit file of the nginx service
+
+list all kernel modules:
+lsmod
+ibmcloud ks ingress alb disable --alb <ALB_ID> -c <cluster_name_or_ID>
+
+load a kernel module: needs to run as root user
+modprobe pcspkr # load pckspkr kernel module
+
+blacklist a kernel module:
+/etc/modprobe.d/blacklist.conf
+add this line: blacklist evbug
+restart the system (shutdown -r now) and list the kernerl modules
+
+check for ports in services / port-service mappings:
+cat /etc/services | grep -i 53
+
+UFW: Uncomplicated Firewall 
+ufw is a wrapper for iptables
+ufw status
+
+enable/disable/reset firewall:
+ufw enable
+ufw disable
+ufw reset - to reset firewall rules
+
+ufw allow from 172.16.238.5 to any port 22 proto tcp -> allow ssh connections from a a jump service
+ufw allow 22 -> allows traffic on port 22
+ufw deny 80 -> denies traffic on port 80
+ufw delete 5 -> 5 being the line number on the rules (from ufw status command)
+ufw status numbered -> show firewall rules with numbers
+ufw allow 1000:2000/tcp -> to allow a tcp port range between 1000 and 2000 in ufw
+
