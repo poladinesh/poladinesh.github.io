@@ -288,10 +288,12 @@ Limit Node Access:
 - Restrict a particular range of IPs using firewalls
 
 Types of Accounts:
+``
 User Account
 SuperUser Account (root)
 System Account (mail, ssh)
 Service Account (nginx, http)
+```
 
 Commands:
 id, who, last - last logged in of a user
@@ -304,7 +306,7 @@ Access Control Files:
 ```
 
 Remove user :  
-update a default shell to nologin shell:
+update a default shell to nologin shell:\
 usermod -s /bin/nologin michael -> disables shell login for michael\
 usermod -s /usr/sbin/nologin himanshi -> disables shell login for himanshi\
 userdel michael\
