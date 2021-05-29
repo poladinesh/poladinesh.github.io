@@ -359,10 +359,20 @@ ufw enable
 ufw disable
 ufw reset - to reset firewall rules
 
-ufw allow from 172.16.238.5 to any port 22 proto tcp -> allow ssh connections from a a jump service
-ufw allow 22 -> allows traffic on port 22
-ufw deny 80 -> denies traffic on port 80
-ufw delete 5 -> 5 being the line number on the rules (from ufw status command)
-ufw status numbered -> show firewall rules with numbers
-ufw allow 1000:2000/tcp -> to allow a tcp port range between 1000 and 2000 in ufw
+allow ssh connections from a a jump service:
+ufw allow from 172.16.238.5 to any port 22 proto tcp
 
+allows traffic on port 22:
+ufw allow 22
+
+denies traffic on port 80:
+ufw deny 80
+
+delete a rule using number (5 being the line number on the rules (from ufw status command)):
+ufw delete 5 
+
+show firewall rules with numbers:
+ufw status numbered
+
+allow a tcp port range between 1000 and 2000 in ufw
+ufw allow 1000:2000/tcp
