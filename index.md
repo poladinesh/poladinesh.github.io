@@ -1,5 +1,6 @@
 # Welcome to poladinesh.github.io
 
+- Click [here](CKS.md) to read my notes on Certified Kubernetes Security Specialist
 - Click [here](CKA.md) to read my notes on Certified Kubernetes Administrator
 - Click [here](Azure-Fundamentals.md) to read my notes on Azure Fundamentals
 - Click [here](AWS-SolArch.md) to read my notes on AWS Solution Architect Associate
