@@ -326,16 +326,20 @@ jim     ALL=(ALL:ALL) ALL -> sudo with password
 jim     ALL=(ALL:ALL) NOPASSWD:ALL -> sudo without password
 %admin  ALL=(ALL:ALL) ALL -> all users in admin group will have sudoers access
 
-Remove Obsolete Packages and Services:
-Keep the system as lean as possible by making sure that only the required software is installed and the ones that are installed, are constantly updated to address security fixes.
+Remove Obsolete Packages and Services:\
+- Keep the system as lean as possible by making sure that only the required software is installed
+- Update the installed packages constantly to address security fixes.
 
+```
 systemctl list-units --type service
 systemctl stop apache2
 systemctl disable apache2
 
-rm /lib/systemd/system/nginx.service - remove unit file of the nginx service
+remove unit file of the nginx service:  
+rm /lib/systemd/system/nginx.service
+```
 
-Working with kernel modules:  
+Restrict kernel modules:  
 ```
 list kernel modules:  
 lsmod
@@ -347,7 +351,7 @@ blacklist a kernel module:
 /etc/modprobe.d/blacklist.conf
 add this line: blacklist evbug
 restart the system (shutdown -r now)
-list the kernel modules to verify (blacklisted kernel module should be absent)
+list kernel modules & search for the blacklisted kernel module to verify (blacklisted kernel module should be absent)
 ```
 check for ports in services / port-service mappings:  
 cat /etc/services | grep -i 53
