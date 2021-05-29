@@ -311,16 +311,24 @@ userdel michael
 Remove a user from a group:
 userdel michael admin -> removes michael from 'admin' group
 
-##### SSH Hardening:
-Use SSH Key pair, ssh public key is installed in users home directory under .ssh/authorized_keys
-disable ssh for root account, this will allow to login with users own account
-To disable rootlogin and password authentication, edit /etc/ssh/sshd_config with following parameters:
-PermitRootLogin no & PasswordAuthentication no
-save the file and restart sshd service (systemctl restart sshd)
+SSH Hardening:
+
+- Use SSH Key pair, ssh public key is installed in users home directory under .ssh/authorized_keys
+- Disable ssh for root account (this will allow to login with users own account)
+
+Disable rootlogin and password authentication:\
+- Edit /etc/ssh/sshd_config with following parameters
+  - PermitRootLogin no 
+  - PasswordAuthentication no
+- Save the file and restart sshd service ->systemctl restart sshd
 
 User Privilege Escalation:
-preferred way to run commands is to use sudo
-/etc/sudoers -> can be edited with visudo
+Preferred way to run commands is to use sudo
+
+Sudoers file can be edited in two ways:
+- use visudo
+- vi /etc/sudoers 
+
 user/group/ hostname/user:group the command to be run / command
 jim     ALL=(ALL:ALL) ALL -> sudo with password
 jim     ALL=(ALL:ALL) NOPASSWD:ALL -> sudo without password
