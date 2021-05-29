@@ -288,7 +288,7 @@ Limit Node Access:
 - Restrict a particular range of IPs using firewalls
 
 Types of Accounts:
-``
+```
 User Account
 SuperUser Account (root)
 System Account (mail, ssh)
