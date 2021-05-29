@@ -276,12 +276,12 @@ Without Authentication:
 
 ### System Hardening:
 
-Limit Node Access
-RBAC Access
-Remove Obsolete Packages & services
-Restrict Network Access
-Restrict Obsolete Kernel Modules
-Identify and Fix Open Ports 
+Limit Node Access\
+RBAC Access\
+Remove Obsolete Packages & services\
+Restrict Network Access\
+Restrict Obsolete Kernel Modules\
+Identify and Fix Open Ports\
 
 Limit Node Access:
 - Create cluster in private network and allow access to Cluster via VPN
