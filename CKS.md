@@ -340,13 +340,14 @@ Working with kernel modules:
 list kernel modules:  
 lsmod
 
-load a kernel module: (needs to run as root user). 
+load a kernel module: (needs to run as root user)
 modprobe pcspkr (loads pckspkr kernel module)
 
 blacklist a kernel module:
 /etc/modprobe.d/blacklist.conf
 add this line: blacklist evbug
-restart the system (shutdown -r now) and list the kernerl modules
+restart the system (shutdown -r now)
+list the kernel modules to verify (blacklisted kernel module should be absent)
 ```
 check for ports in services / port-service mappings:  
 cat /etc/services | grep -i 53
