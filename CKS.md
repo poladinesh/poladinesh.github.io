@@ -354,7 +354,7 @@ UFW: Uncomplicated Firewall
 ufw is a wrapper for iptables
 ufw status
 
-enable/disable/reset firewall:
+enable/disable/reset firewall:  
 ufw enable
 ufw disable
 ufw reset - to reset firewall rules
